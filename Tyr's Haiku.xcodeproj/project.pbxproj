@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A3489FD32938C5A700D6C2A4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A3489FD22938C5A700D6C2A4 /* Podfile */; };
 		A395479B2938B66E00EC5494 /* SyllableCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395479A2938B66E00EC5494 /* SyllableCounter.swift */; };
 		A3F8C2E7293793600029FE5D /* Tyr_s_HaikuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2E6293793600029FE5D /* Tyr_s_HaikuApp.swift */; };
 		A3F8C2E9293793600029FE5D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2E8293793600029FE5D /* ContentView.swift */; };
@@ -20,8 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A3489FCD2938BE5100D6C2A4 /* SyllablePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SyllablePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		A3489FD22938C5A700D6C2A4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A3435E112938E3B900D11EA9 /* SyllablePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SyllablePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A395479A2938B66E00EC5494 /* SyllableCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableCounter.swift; sourceTree = "<group>"; };
 		A3F8C2E3293793600029FE5D /* Tyr's Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tyr's Haiku.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F8C2E6293793600029FE5D /* Tyr_s_HaikuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tyr_s_HaikuApp.swift; sourceTree = "<group>"; };
@@ -49,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				A395479A2938B66E00EC5494 /* SyllableCounter.swift */,
-				A3489FCD2938BE5100D6C2A4 /* SyllablePlayground.playground */,
+				A3435E112938E3B900D11EA9 /* SyllablePlayground.playground */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -57,7 +55,6 @@
 		A3F8C2DA293793600029FE5D = {
 			isa = PBXGroup;
 			children = (
-				A3489FD22938C5A700D6C2A4 /* Podfile */,
 				A3F8C2E5293793600029FE5D /* Tyr's Haiku */,
 				A3F8C2E4293793600029FE5D /* Products */,
 			);
@@ -127,6 +124,8 @@
 			dependencies = (
 			);
 			name = "Tyr's Haiku";
+			packageProductDependencies = (
+			);
 			productName = "Tyr's Haiku";
 			productReference = A3F8C2E3293793600029FE5D /* Tyr's Haiku.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +154,8 @@
 				Base,
 			);
 			mainGroup = A3F8C2DA293793600029FE5D;
+			packageReferences = (
+			);
 			productRefGroup = A3F8C2E4293793600029FE5D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,7 +170,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3489FD32938C5A700D6C2A4 /* Podfile in Resources */,
 				A3F8C2EE293793610029FE5D /* Preview Assets.xcassets in Resources */,
 				A3F8C2EB293793610029FE5D /* Assets.xcassets in Resources */,
 			);

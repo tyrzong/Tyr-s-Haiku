@@ -10,9 +10,10 @@ func countSyllable(word: String) -> Int{
     return count
 }
 
-let line = "this is a haiku"
+let line = "testakdieqoqdjqjkfqpflkdsvpoegubjkcnoscoc"
 let words = line.components(separatedBy: " ")
 
 for w in words{
     print(countSyllable(word: w))
 }
+
