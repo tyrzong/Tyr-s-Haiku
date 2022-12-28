@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjContext
@@ -34,6 +35,10 @@ struct ContentView: View {
                 }
                 .listStyle(.plain )
             }
+            .onAppear(){
+                addNotification()
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            }
             .navigationTitle("Tyr's Haikus")
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -52,6 +57,30 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
+    }
+    
+    private func addNotification(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
+            if success{
+                print("all set")
+            } else if let error = error{
+                print(error.localizedDescription)
+            }
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Write a new Haiku"
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        
+        var datecomponents = DateComponents()
+        datecomponents.hour =  7
+        datecomponents.minute = 0
+        let trigger = UNCalendarNotificationTrigger(dateMatching:  datecomponents, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
     }
 
     private func formatDateString(date: Date) -> String{
