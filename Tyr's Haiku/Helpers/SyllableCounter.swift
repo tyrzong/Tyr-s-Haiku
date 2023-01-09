@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftSyllables
+import SyllableCounter
 
 extension StringProtocol {
     subscript(offset: Int) -> Character {
@@ -97,11 +97,10 @@ func countSyllable(word: String) -> Int{
 
 func countSyllables(line: String) -> Int{
     let lowercasedLine = line.lowercased()
-    print(lowercasedLine)
     let words = lowercasedLine.components(separatedBy: " ")
     var count = 0
     for w in words{
-        count += SwiftSyllables.getSyllables(w)
+        count += w.syllables
     }
     return count
 }

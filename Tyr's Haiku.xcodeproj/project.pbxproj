@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3385BC2295CE19D00DA0BBE /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3385BC6295CE5A200DA0BBE /* SyllableCounter in Frameworks */ = {isa = PBXBuildFile; productRef = A3385BC5295CE5A200DA0BBE /* SyllableCounter */; };
+		A3385BC8295E20C700DA0BBE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3385BC7295E20C700DA0BBE /* SettingsView.swift */; };
+		A3385BCA295E20EB00DA0BBE /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3385BC9295E20EB00DA0BBE /* TabsView.swift */; };
 		A395479B2938B66E00EC5494 /* SyllableCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395479A2938B66E00EC5494 /* SyllableCounter.swift */; };
 		A3F8C2E7293793600029FE5D /* Tyr_s_HaikuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2E6293793600029FE5D /* Tyr_s_HaikuApp.swift */; };
 		A3F8C2E9293793600029FE5D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2E8293793600029FE5D /* ContentView.swift */; };
@@ -18,7 +22,23 @@
 		A3F8C2FE293798680029FE5D /* EditHaikuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2FD293798680029FE5D /* EditHaikuView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A3385BC3295CE19D00DA0BBE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A3385BC2295CE19D00DA0BBE /* (null) in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A3385BC7295E20C700DA0BBE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A3385BC9295E20EB00DA0BBE /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		A3435E112938E3B900D11EA9 /* SyllablePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SyllablePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A395479A2938B66E00EC5494 /* SyllableCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableCounter.swift; sourceTree = "<group>"; };
 		A3F8C2E3293793600029FE5D /* Tyr's Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tyr's Haiku.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3385BC6295CE5A200DA0BBE /* SyllableCounter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +78,6 @@
 			children = (
 				A3F8C2E5293793600029FE5D /* Tyr's Haiku */,
 				A3F8C2E4293793600029FE5D /* Products */,
-				F766DA5BCE307716A2911F54 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,15 +125,10 @@
 				A3F8C2E8293793600029FE5D /* ContentView.swift */,
 				A3F8C2FB2937985F0029FE5D /* AddHaikuView.swift */,
 				A3F8C2FD293798680029FE5D /* EditHaikuView.swift */,
+				A3385BC7295E20C700DA0BBE /* SettingsView.swift */,
+				A3385BC9295E20EB00DA0BBE /* TabsView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F766DA5BCE307716A2911F54 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,12 +141,16 @@
 				A3F8C2DF293793600029FE5D /* Sources */,
 				A3F8C2E0293793600029FE5D /* Frameworks */,
 				A3F8C2E1293793600029FE5D /* Resources */,
+				A3385BC3295CE19D00DA0BBE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Tyr's Haiku";
+			packageProductDependencies = (
+				A3385BC5295CE5A200DA0BBE /* SyllableCounter */,
+			);
 			productName = "Tyr's Haiku";
 			productReference = A3F8C2E3293793600029FE5D /* Tyr's Haiku.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +179,9 @@
 				Base,
 			);
 			mainGroup = A3F8C2DA293793600029FE5D;
+			packageReferences = (
+				A3385BC4295CE5A200DA0BBE /* XCRemoteSwiftPackageReference "syllable-counter-swift" */,
+			);
 			productRefGroup = A3F8C2E4293793600029FE5D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,10 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F8C2F7293793C10029FE5D /* HaikuModel.xcdatamodeld in Sources */,
+				A3385BC8295E20C700DA0BBE /* SettingsView.swift in Sources */,
 				A3F8C2F9293795AD0029FE5D /* DataController.swift in Sources */,
 				A3F8C2FC2937985F0029FE5D /* AddHaikuView.swift in Sources */,
 				A3F8C2E9293793600029FE5D /* ContentView.swift in Sources */,
 				A395479B2938B66E00EC5494 /* SyllableCounter.swift in Sources */,
+				A3385BCA295E20EB00DA0BBE /* TabsView.swift in Sources */,
 				A3F8C2E7293793600029FE5D /* Tyr_s_HaikuApp.swift in Sources */,
 				A3F8C2FE293798680029FE5D /* EditHaikuView.swift in Sources */,
 			);
@@ -329,6 +353,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,7 +363,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -358,6 +383,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,7 +393,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -393,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A3385BC4295CE5A200DA0BBE /* XCRemoteSwiftPackageReference "syllable-counter-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wfreitag/syllable-counter-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3385BC5295CE5A200DA0BBE /* SyllableCounter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3385BC4295CE5A200DA0BBE /* XCRemoteSwiftPackageReference "syllable-counter-swift" */;
+			productName = SyllableCounter;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A3F8C2F5293793C10029FE5D /* HaikuModel.xcdatamodeld */ = {

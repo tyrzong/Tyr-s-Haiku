@@ -34,7 +34,6 @@ struct AddHaikuView: View {
     }
     
     var body: some View {
-
         Form{
             Section{
                 HStack{
@@ -103,6 +102,9 @@ struct AddHaikuView: View {
                 }
                 Spacer()
             }
+        }
+        .onAppear(){
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     

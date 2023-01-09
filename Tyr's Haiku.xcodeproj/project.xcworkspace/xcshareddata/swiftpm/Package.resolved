@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "syllable-counter-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wfreitag/syllable-counter-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "029c8568b4d060174284fdedd7473863768a903b"
+      }
+    }
+  ],
+  "version" : 2
+}

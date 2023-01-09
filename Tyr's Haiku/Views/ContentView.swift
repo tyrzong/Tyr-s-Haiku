@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import UserNotifications
 
-struct ContentView: View {
+struct HaikuView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var haikus: FetchedResults<Haiku>
     
@@ -35,10 +34,6 @@ struct ContentView: View {
                 }
                 .listStyle(.plain )
             }
-            .onAppear(){
-                addNotification()
-                UIApplication.shared.applicationIconBadgeNumber = 0
-            }
             .navigationTitle("Tyr's Haikus")
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -57,30 +52,6 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
-    }
-    
-    private func addNotification(){
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
-            if success{
-                print("all set")
-            } else if let error = error{
-                print(error.localizedDescription)
-            }
-        }
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Write a new Haiku"
-        content.sound = UNNotificationSound.default
-        content.badge = 1
-        
-        var datecomponents = DateComponents()
-        datecomponents.hour =  7
-        datecomponents.minute = 0
-        let trigger = UNCalendarNotificationTrigger(dateMatching:  datecomponents, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request)
     }
 
     private func formatDateString(date: Date) -> String{
@@ -106,6 +77,21 @@ struct ContentView: View {
             return "\(haikus.count) haiku written"
         }
         return "\(haikus.count) haikus written"
+    }
+}
+
+struct ContentView: View{
+    var body: some View {
+        TabView{
+            HaikuView()
+                .tabItem{
+                    Label("Haiku", systemImage: "square.and.pencil")
+                }
+            SettingsView()
+                .tabItem{
+                    Label("Settings", systemImage: "gear")
+                }
+        }
     }
 }
 

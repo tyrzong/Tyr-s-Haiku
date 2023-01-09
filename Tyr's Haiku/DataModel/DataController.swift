@@ -48,4 +48,18 @@ class DataController: ObservableObject{
         
         save(context: context)
     }
+    
+    func addReminder(date: Date, uuid: UUID, isOn: Bool, context: NSManagedObjectContext){
+        let reminder = Reminder(context: context)
+        reminder.id = uuid
+        reminder.date = date
+        reminder.isOn = isOn
+        save(context: context)
+    }
+    
+    func editReminder(reminder: Reminder, date: Date, isOn: Bool, context: NSManagedObjectContext){
+        reminder.date = date
+        reminder.isOn = isOn
+        save(context: context)
+    }
 }
