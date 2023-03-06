@@ -43,7 +43,7 @@ struct AddHaikuView: View {
                         .onSubmit{
                             focusField = .line2
                         }
-                    Text("\(countSyllables(line:line1))/5").foregroundColor(.gray)
+                    Text("\(countSyllablesInLine(line1))/5").foregroundColor(.gray)
                 }
                 HStack{
                     TextField("Second line", text:$line2)
@@ -52,7 +52,7 @@ struct AddHaikuView: View {
                         .onSubmit{
                             focusField = .line3
                         }
-                    Text("\(countSyllables(line:line2))/7").foregroundColor(.gray)
+                    Text("\(countSyllablesInLine(line2))/7").foregroundColor(.gray)
                 }
                 HStack{
                     TextField("Third line", text:$line3)
@@ -61,7 +61,7 @@ struct AddHaikuView: View {
                         .onSubmit{
                             focusField = .title
                         }
-                    Text("\(countSyllables(line:line3))/5").foregroundColor(.gray)
+                    Text("\(countSyllablesInLine(line3))/5").foregroundColor(.gray)
                 }
                 HStack{
                     Text("Inspired by:").foregroundColor(.gray)

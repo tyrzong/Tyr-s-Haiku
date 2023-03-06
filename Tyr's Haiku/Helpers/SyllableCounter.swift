@@ -1,106 +1,45 @@
-//
-//  SyllableCounter.swift
-//  Tyr's Haiku
-//
-//  Created by Tyr Zong on 12/1/22.
-//
-
 import Foundation
-import SyllableCounter
 
-extension StringProtocol {
-    subscript(offset: Int) -> Character {
-        self[index(startIndex, offsetBy: offset)]
-    }
-}
-
-func countSyllable(word: String) -> Int{
-    var count = 0
-    var wordArray = [String]()
-    // turn letters into consonant vowels and special cases
-    for i in 0..<word.count{
-        if word[i] == "a" || word[i] == "i" || word[i] == "o" || word[i] == "u"{
-            wordArray.append("v")
-        }
-        else if word[i] == "e"{
-            wordArray.append("e")
-        }else if word[i] == "y"{
-            wordArray.append("y")
-        }else{
-            wordArray.append("c")
-        }
-    }
-    for i in 0..<wordArray.count{
-        // vowel group counts as 1 syllable
-        if wordArray[i] == "v"{
-            var j = i+1
-            while j < wordArray.count{
-                if wordArray[j] == "v"{
-                    wordArray[j] = "_v"
-                }else if wordArray[j] == "y"{
-                    wordArray[j] = "c"
-                    break
-                }else if wordArray[j] == "e"{
-                    wordArray[j] = "v"
-                    break
-                }else {
-                    break
-                }
-                j = j+1
-            }
-        }
-        // special case y
-        if wordArray[i] == "y"{
-            let j = i+1
-            if j < wordArray.count{
-                if wordArray[j] == "v"{
-                    wordArray[j] = "_v"
-                    wordArray[i] = "v"
-                }
-            }else{
-                wordArray[i] = "v"
-            }
-        }
-        // special case e
-        if wordArray[i] == "e"{
-            let j = i-2
-            let k = i-1
-            if j < 0 || k < 0{
-                wordArray[i] = "v"
-            }else if wordArray[k] == "v"{
-                wordArray[i] = "_v"
-            }else if wordArray[k] == "_v"{
-                wordArray[i] = "_v"
-            }else if wordArray[k] == "c"{
-                if i == word.count - 1{
-                    if wordArray[k] == "c" && wordArray[j] == "c"{
-                        wordArray[i] = "v"
-                    }else {
-                        wordArray[i] = "c"
-                    }
-                }else{
-                    wordArray[i] = "v"
-                }
-            }else{
-                wordArray[i] = "c"
-            }
+func loadCmudict() -> [String: String] {
+    let cmudictPath = Bundle.main.path(forResource: "cmudict", ofType: "txt")!
+    let cmudictString = try! String(contentsOfFile: cmudictPath)
+    
+    var cmudict = [String: String]()
+    let lines = cmudictString.components(separatedBy: .newlines)
+    
+    for line in lines {
+        if !line.hasPrefix(";;;") && !line.isEmpty {
+            let lineParts = line.components(separatedBy: "  ")
+            let word = lineParts[0].lowercased()
+            let pronunciation = lineParts[1]
+            cmudict[word] = pronunciation
         }
     }
     
-    for c in wordArray{
-        if c == "v"{
-            count += 1
-        }
-    }
-    return count
+    return cmudict
 }
 
-func countSyllables(line: String) -> Int{
-    let lowercasedLine = line.lowercased()
-    let words = lowercasedLine.components(separatedBy: " ")
-    var count = 0
-    for w in words{
-        count += w.syllables
+let cmudict = loadCmudict()
+
+func countSyllables(in word: String) -> Int {
+    if word.isEmpty{
+        return 0
     }
-    return count
+    let pronunciation = cmudict[word.lowercased()]
+    if let pronunciation = pronunciation {
+        let syllables = pronunciation.components(separatedBy: .whitespaces).filter { $0.rangeOfCharacter(from: .decimalDigits) != nil }.count
+        return syllables
+    }
+    return 1
 }
+
+func countSyllablesInLine(_ line: String) -> Int {
+    let words = line.components(separatedBy: " ")
+    let syllableCounts = words.map { countSyllables(in: $0) }
+    let totalSyllables = syllableCounts.reduce(0, +)
+    if line.isEmpty{
+        return 0
+    }
+    return totalSyllables
+}
+

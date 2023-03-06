@@ -1,100 +1,69 @@
-import UIKit
+import Foundation
 
-extension StringProtocol {
-    subscript(offset: Int) -> Character {
-        self[index(startIndex, offsetBy: offset)]
+// Create a lookup table of words and their syllable counts
+let cmudictFileURL = Bundle.main.url(forResource: "cmudict", withExtension: "txt")!
+let cmudictString = try! String(contentsOf: cmudictFileURL)
+var wordSyllableCounts: [String: Int] = [:]
+
+for line in cmudictString.components(separatedBy: .newlines) {
+    let components = line.components(separatedBy: "  ")
+    if components.count == 2 {
+        let word = components[0]
+        let syllableCount = components[1].components(separatedBy: " ").filter { $0.rangeOfCharacter(from: .decimalDigits) != nil }.count
+        wordSyllableCounts[word.lowercased()] = syllableCount
     }
 }
 
-func countSyllable(word: String) -> Int{
-    var count = 0
-    var wordArray = [String]()
-    // turn letters into consonant vowels and special cases
-    for i in 0..<word.count{
-        if word[i] == "a" || word[i] == "i" || word[i] == "o" || word[i] == "u"{
-            wordArray.append("v")
-        }
-        else if word[i] == "e"{
-            wordArray.append("e")
-        }else if word[i] == "y"{
-            wordArray.append("y")
-        }else{
-            wordArray.append("c")
-        }
+func countSyllables(in word: String) -> Int {
+    if let syllableCount = wordSyllableCounts[word.lowercased()] {
+        return syllableCount
     }
-    print(wordArray)
-    for i in 0..<wordArray.count{
-        // vowel group counts as 1 syllable
-        if wordArray[i] == "v"{
-            var j = i+1
-            while j < wordArray.count{
-                if wordArray[j] == "v"{
-                    wordArray[j] = "_v"
-                }else if wordArray[j] == "y"{
-                    wordArray[j] = "c"
-                    break
-                }else if wordArray[j] == "e"{
-                    wordArray[j] = "v"
-                    break
-                }else {
-                    break
-                }
-                j = j+1
+
+    let vowels: Set<Character> = ["a", "e", "i", "o", "u", "y"]
+    var syllableCount = 0
+    var lastChar: Character?
+
+    for char in word {
+        if vowels.contains(char) {
+            if lastChar == nil || !vowels.contains(lastChar!) {
+                syllableCount += 1
             }
         }
-        // special case y
-        if wordArray[i] == "y"{
-            var j = i+1
-            if j < wordArray.count{
-                if wordArray[j] == "v"{
-                    wordArray[j] = "_v"
-                    wordArray[i] = "v"
-                }
-            }else{
-                wordArray[i] = "v"
-            }
-        }
-        // special case e
-        if wordArray[i] == "e"{
-            let j = i-2
-            let k = i-1
-            if j < 0 || k < 0{
-                wordArray[i] = "v"
-            }else if wordArray[k] == "v"{
-                wordArray[i] == "v"
-            }else if wordArray[k] == "_v"{
-                wordArray[i] = "_v"
-            }else if wordArray[k] == "c"{
-                if i == word.count - 1{
-                    if wordArray[k] == "c" && wordArray[j] == "c"{
-                        wordArray[i] = "v"
-                    }else {
-                        wordArray[i] = "c"
-                    }
-                }else{
-                    wordArray[i] = "v"
-                }
-            }else{
-                wordArray[i] = "c"
+        lastChar = char
+    }
+
+    if word.hasSuffix("e") {
+        if syllableCount > 1 {
+            syllableCount -= 1
+        } else if syllableCount == 1 {
+            let trimmed = String(word.dropLast())
+            syllableCount = countSyllables(in: trimmed)
+            if syllableCount == 1 {
+                syllableCount -= 1
             }
         }
     }
-    
-    print(wordArray)
-    for c in wordArray{
-        if c == "v"{
-            count += 1
+
+    if word.hasSuffix("le") {
+        if let lastChar = lastChar, lastChar == "e" {
+            syllableCount += 1
         }
     }
-    return count
+
+    if syllableCount == 0 {
+        syllableCount = 1
+    }
+
+    return syllableCount
 }
 
-
-
-var line = "seek seed see"
-line = line.lowercased()
-let words = line.components(separatedBy: " ")
-
-for w in words{
-    print("\(w): \(countSyllable(word: w))")
+func countSyllablesInLine(_ line: String) -> Int {
+    let words = line.components(separatedBy: " ")
+    let syllableCounts = words.map { countSyllables(in: $0.lowercased()) }
+    let totalSyllables = syllableCounts.reduce(0, +)
+    return totalSyllables
 }
+
+let line = "The quick brown fox jumps over the lazy dog"
+let totalSyllables = countSyllablesInLine(line)
+print("The line '\(line)' has \(totalSyllables) syllables.")

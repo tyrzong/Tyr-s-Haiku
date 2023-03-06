@@ -33,7 +33,7 @@ struct EditHaikuView: View {
     }
     
     private func copyHaiku(){
-        pasteBoard.string = formatDateString(date: Date()) + "\n" + line1 + "\n" + line2 + "\n" + line3 + "\n— inspired by " + title
+        pasteBoard.string = formatDateString(date: haiku.date!) + "\n" + line1 + "\n" + line2 + "\n" + line3 + "\n— inspired by " + title
     }
     
     var body: some View {
