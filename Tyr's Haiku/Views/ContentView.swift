@@ -34,7 +34,7 @@ struct HaikuView: View {
                 }
                 .listStyle(.plain )
             }
-            .navigationTitle("Tyr's Haikus")
+            .navigationTitle("My Haikus")
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button{
@@ -53,7 +53,7 @@ struct HaikuView: View {
         }
         .navigationViewStyle(.stack)
     }
-
+    
     private func formatDateString(date: Date) -> String{
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -81,6 +81,7 @@ struct HaikuView: View {
 }
 
 struct ContentView: View{
+    
     var body: some View {
         TabView{
             HaikuView()

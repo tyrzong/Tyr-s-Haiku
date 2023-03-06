@@ -10,7 +10,6 @@
 		A3385BC2295CE19D00DA0BBE /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3385BC6295CE5A200DA0BBE /* SyllableCounter in Frameworks */ = {isa = PBXBuildFile; productRef = A3385BC5295CE5A200DA0BBE /* SyllableCounter */; };
 		A3385BC8295E20C700DA0BBE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3385BC7295E20C700DA0BBE /* SettingsView.swift */; };
-		A3385BCA295E20EB00DA0BBE /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3385BC9295E20EB00DA0BBE /* TabsView.swift */; };
 		A3859AE029B57A49007A8CFF /* cmudict.txt in Resources */ = {isa = PBXBuildFile; fileRef = A3859ADF29B57A49007A8CFF /* cmudict.txt */; };
 		A395479B2938B66E00EC5494 /* SyllableCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395479A2938B66E00EC5494 /* SyllableCounter.swift */; };
 		A3F8C2E7293793600029FE5D /* Tyr_s_HaikuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8C2E6293793600029FE5D /* Tyr_s_HaikuApp.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		A3385BC7295E20C700DA0BBE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A3385BC9295E20EB00DA0BBE /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		A3435E112938E3B900D11EA9 /* SyllablePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SyllablePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A3859ADF29B57A49007A8CFF /* cmudict.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = cmudict.txt; sourceTree = "<group>"; };
 		A395479A2938B66E00EC5494 /* SyllableCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableCounter.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				A3F8C2FB2937985F0029FE5D /* AddHaikuView.swift */,
 				A3F8C2FD293798680029FE5D /* EditHaikuView.swift */,
 				A3385BC7295E20C700DA0BBE /* SettingsView.swift */,
-				A3385BC9295E20EB00DA0BBE /* TabsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,7 +215,6 @@
 				A3F8C2FC2937985F0029FE5D /* AddHaikuView.swift in Sources */,
 				A3F8C2E9293793600029FE5D /* ContentView.swift in Sources */,
 				A395479B2938B66E00EC5494 /* SyllableCounter.swift in Sources */,
-				A3385BCA295E20EB00DA0BBE /* TabsView.swift in Sources */,
 				A3F8C2E7293793600029FE5D /* Tyr_s_HaikuApp.swift in Sources */,
 				A3F8C2FE293798680029FE5D /* EditHaikuView.swift in Sources */,
 			);

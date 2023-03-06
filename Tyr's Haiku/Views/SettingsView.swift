@@ -17,7 +17,6 @@ struct SettingsView: View {
     @State var reminderID = UUID()
     @State private var isNotifOn: Bool = false
     
-    
     var body: some View {
         List{
             Toggle(
