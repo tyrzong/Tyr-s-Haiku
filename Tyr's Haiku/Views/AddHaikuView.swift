@@ -85,26 +85,16 @@ struct AddHaikuView: View {
                     Spacer()
                 }
             }
-            Section{
-                HStack{
-                    Spacer()
-                    Button("Copy"){
-                        copyHaiku()
-                    }
-                    Spacer()
-                }
-            }
             HStack{
                 Spacer()
                 Button("Save"){
+                    copyHaiku()
                     DataController().addHaiku(line1: line1, line2: line2, line3: line3, title: title, context: managedObjContext)
+                    UIApplication.shared.applicationIconBadgeNumber = 0
                     dismiss()
                 }
                 Spacer()
             }
-        }
-        .onAppear(){
-            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     

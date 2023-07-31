@@ -85,18 +85,10 @@ struct EditHaikuView: View {
                     Spacer()
                 }
             }
-            Section{
-                HStack{
-                    Spacer()
-                    Button("Copy"){
-                        copyHaiku()
-                    }
-                    Spacer()
-                }
-            }
             HStack{
                 Spacer()
                 Button("Save"){
+                    copyHaiku()
                     DataController().editHaiku(haiku: haiku, line1: line1, line2: line2, line3: line3, title: title, context: managedObjContext)
                     dismiss()
                 }
